@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Aprendendo a Aprender</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="243dce8d-8b40-80dd-a47d-cd3b2aadd851" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/brain_pink.svg"/></div><h1 class="page-title">Aprendendo a Aprender</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="243dce8d-8b40-81ca-a647-ca07abc4d1ea"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Descrição : As anotações contidas aqui são advindas da aula do Marlon sobre como o cérebro funciona no âmbito do aprendizado. Foi uma aula especial  no dia 01/08/2025.</strong></div></figure><h1 id="243dce8d-8b40-81a1-bd62-fa580bb1e0d8" class=""><mark class="highlight-pink">Anotações da Aula</mark></h1><p id="243dce8d-8b40-8195-a7b5-d05af230be25" class="">Conteúdo divido em 3 grandes assuntos que a aula abordou ⬇️</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><mark class="highlight-pink"><strong>Parte I →</strong></mark><strong> Divisão do Cérebro</strong></summary><div class="indented"><ul id="243dce8d-8b40-8176-a381-f7c7973415a3" class="bulleted-list"><li style="list-style-type:disc"><strong>O Cérebro →</strong></li></ul><p id="243dce8d-8b40-819b-aaaf-dda3c7d96497" class=""><mark class="highlight-gray"><strong> O cérebro é o órgão responsável pelo funcionamento do corpo. Sendo o portador do Sistema Nervoso, responsável pelas ações, sentidos e reações dos humanos.</strong></mark></p><p id="248dce8d-8b40-803f-8240-dd16950e2b47" class="">
+</p><figure id="248dce8d-8b40-8056-857c-d75a30925ed0" class="image" style="text-align:center"><a href="image.png"><img style="width:528px" src="image.png"/></a></figure><hr id="248dce8d-8b40-80bb-98d4-c0d2b3927045"/><p id="248dce8d-8b40-8093-9125-f277f1d5054f" class="">
+</p><p id="248dce8d-8b40-8031-b8a1-d64778e78a2d" class=""><mark class="highlight-gray">As partes mais relevantes para o </mark><em><mark class="highlight-gray">Aprendizado</mark></em><mark class="highlight-gray"> são :</mark></p><p id="248dce8d-8b40-80bf-b369-e9d1753e9ba9" class="">
+</p><ul id="248dce8d-8b40-8041-9e22-eb9953357c5b" class="bulleted-list"><li style="list-style-type:disc"><strong>Córtex → “Difícil de absorver, mas nunca esquece”.</strong><p id="248dce8d-8b40-80fa-beb7-c65a341f058c" class=""><mark class="highlight-gray">O Córtex abriga os “</mark><em><mark class="highlight-gray">Lobos</mark></em><mark class="highlight-gray">” do cérebro, sendo os mais importantes → Lobo Frontal ; Lobo Pré-Frontal ; Lobo Occipital. Todos esses são formados pelos </mark><mark class="highlight-gray"><strong>Neurônios</strong></mark><mark class="highlight-gray"> que se encontram nessa parte. </mark></p><p id="248dce8d-8b40-8049-bf01-dc7f2d5e4e3b" class="">
+</p></li></ul><p id="248dce8d-8b40-801f-8fb5-dc10f499a6b4" class=""><mark class="highlight-gray">O Córtex é o responsável pelos conhecimentos abstratos e lógicos. Como a capacidade de resolver problemas ou lembrar de textos.</mark></p><p id="248dce8d-8b40-80ae-9d07-d186c2930f0a" class=""><div class="indented"><p id="248dce8d-8b40-80a9-b66c-d482dcf21250" class=""><mark class="highlight-gray"><strong>O grande objetivo durante o Aprendizado é trazer as informações para ele.</strong></mark></p></div></p><p id="248dce8d-8b40-806f-9a17-d6d4f86dd45e" class="">
+</p><figure id="248dce8d-8b40-8093-a13e-ff49b13bfaf5" class="image" style="text-align:center"><a href="image%201.png"><img style="width:480px" src="image%201.png"/></a></figure><hr id="248dce8d-8b40-80be-b92d-caf2748bab13"/><p id="248dce8d-8b40-8009-9ddf-f3ca0314a2be" class="">
+</p><ul id="248dce8d-8b40-80de-8a87-c81704dd9ba8" class="bulleted-list"><li style="list-style-type:disc"><strong>Cerebelo → “Difícil de absorver, mas nunca esquece”.</strong><p id="248dce8d-8b40-800e-92d8-d8093b7a2407" class=""><mark class="highlight-gray">O Cerebelo também pode ser chamado de &quot;</mark><em><mark class="highlight-gray">pequeno cérebro</mark></em><mark class="highlight-gray">&quot;, ele desempenha um papel no equilíbrio e no controle da postura. </mark></p><p id="248dce8d-8b40-8066-a696-dfc7e6adc7bd" class="">
+</p></li></ul><p id="248dce8d-8b40-800c-aa31-cfa71648f8bd" class=""><mark class="highlight-gray">O Cerebelo é o responsável pelos conhecimentos práticos que aprendemos. A famosa expressão “</mark><em><mark class="highlight-gray">é como andar de bicicleta</mark></em><mark class="highlight-gray">” é causada por ele.</mark></p><p id="248dce8d-8b40-8033-910d-cdc61b475296" class=""><div class="indented"><p id="248dce8d-8b40-8043-80f9-f00b891c6e54" class=""><mark class="highlight-gray"><strong>O grande objetivo durante o Aprendizado é trazer as informações para ele.</strong></mark></p></div></p><p id="248dce8d-8b40-80d7-8cb6-ccf003763746" class=""><div class="indented"><figure id="248dce8d-8b40-807a-a455-c513469ae9df" class="image" style="text-align:center"><a href="image%202.png"><img style="width:413px" src="image%202.png"/></a></figure><hr id="248dce8d-8b40-8003-a2ee-db3c3a400004"/><p id="248dce8d-8b40-80f3-9417-d402bd347e49" class="">
+</p><ul id="248dce8d-8b40-803a-a59c-e3c718c1b846" class="bulleted-list"><li style="list-style-type:disc"><strong>Sistema Límbico → “Esquece tão fácil quanto aprende”.</strong><p id="248dce8d-8b40-8075-88db-d9d2dbcfa906" class=""><mark class="highlight-gray">As informações que guardamos no dia, captadas ao longo da vivência tem o prazo de duração de no máximo algumas horas.</mark></p><p id="248dce8d-8b40-80d2-b206-d6aba0404c3f" class="">
+</p></li></ul><p id="248dce8d-8b40-8083-adb7-f6c8b5fefa0c" class=""><mark class="highlight-gray">As informações adquiridas ao longo do dia são enviadas para cá, e ao dormirmos o cérebro (sozinho e de forma aleatória) gerencia quais dessas informações guardar.</mark></p><p id="248dce8d-8b40-806d-8682-d9cc02d91ba1" class=""><div class="indented"><p id="248dce8d-8b40-80b3-925e-e954797a63c0" class=""><mark class="highlight-gray"><strong>Para melhorar a gerência do cérebro, devemos demonstrar para ele o que de fato é importante para nós.</strong></mark></p></div></p><p id="248dce8d-8b40-80f9-94a8-de1f6ede0279" class="">
+</p><figure id="248dce8d-8b40-8019-b9ec-f03e5b15ccfb" class="image" style="text-align:center"><a href="image%203.png"><img style="width:413px" src="image%203.png"/></a></figure><hr id="248dce8d-8b40-809b-b3f9-c9188ef7497d"/><p id="248dce8d-8b40-80c4-ae9b-d2b2942a2e00" class="">
+</p></div></p></div></details><p id="248dce8d-8b40-8083-a192-d0f0c98410ab" class="">
+</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><mark class="highlight-pink"><strong>Parte II → </strong></mark><strong>O Sono</strong></summary><div class="indented"><ul id="248dce8d-8b40-8020-b730-d7aa43620f9d" class="bulleted-list"><li style="list-style-type:disc"><strong>Ciclo Circadiano →</strong></li></ul><p id="248dce8d-8b40-808b-9e0d-d7b2a3431b32" class=""><mark class="highlight-gray">Apresenta algumas características que afetam o sono, pois o ser humano é regido por essa necessidade de respeitar a natureza dos horários.</mark></p><p id="248dce8d-8b40-8084-a187-d156901a4580" class="">Graças a ele → <mark class="highlight-gray">O </mark><em><mark class="highlight-gray">Aprendizado</mark></em><mark class="highlight-gray">  tem apenas 1 dia de duração.</mark></p><p id="248dce8d-8b40-8076-b2b7-dd909b453f6d" class="">
+</p><blockquote id="248dce8d-8b40-8069-9610-dfb7066bc9ba" class=""><mark class="highlight-gray">Sono não é cansaço - Marlon</mark></blockquote><p id="248dce8d-8b40-80c9-910c-e93de89abb29" class="">
+</p><p id="248dce8d-8b40-80da-aae2-e4fab9b06107" class=""><mark class="highlight-gray"><strong>O cansaço</strong></mark><mark class="highlight-gray">, de forma técnica, só pode ser físico. Enquanto </mark><mark class="highlight-gray"><strong>o sono</strong></mark><mark class="highlight-gray">, pode ser interpretado como se o HD do cérebro estivesse sem espaço para novas informações.</mark></p><hr id="248dce8d-8b40-802a-a6b5-ea7a38a20c2c"/><p id="248dce8d-8b40-80ff-8aeb-f13419c5f6ab" class="">
+</p><ul id="248dce8d-8b40-8033-a1f7-f96e2927343d" class="bulleted-list"><li style="list-style-type:disc"><strong>Fases do Sono →</strong></li></ul><p id="248dce8d-8b40-80a8-8ef4-f0386f953e81" class=""><mark class="highlight-gray">O sono é divido em algumas partes. Sendo a mais importante delas a F</mark><mark class="highlight-gray"><strong>ase R.E.M.</strong></mark></p><p id="248dce8d-8b40-8049-b6d4-effdc1d9f08b" class="">
+</p><ul id="248dce8d-8b40-804b-a85c-db3b63ed0f6d" class="bulleted-list"><li style="list-style-type:disc"><strong>Sono Leve → </strong></li></ul><p id="248dce8d-8b40-802a-a708-eddeb64dce47" class=""><mark class="highlight-gray">Nessa fase a </mark><em><mark class="highlight-gray">Atividade</mark></em><mark class="highlight-gray"> do cérebro está em um </mark><em><mark class="highlight-gray">Alto</mark></em><mark class="highlight-gray"> nível. Deve durar entorno de uns 10 min se não houverem interrupções.</mark></p><p id="248dce8d-8b40-806f-b166-e2b0fa06902b" class="">
+</p><ul id="248dce8d-8b40-80a4-b87d-c73adc75b87c" class="bulleted-list"><li style="list-style-type:disc"><strong>Sono Profundo →</strong></li></ul><p id="248dce8d-8b40-8008-8034-fb581b5a65ac" class=""><mark class="highlight-gray">Se não houverem interrupções durante o </mark><em><mark class="highlight-gray">Sono Leve</mark></em><mark class="highlight-gray">, o cérebro passa para este nível. Onde a </mark><em><mark class="highlight-gray">Atividade é baixa</mark></em><mark class="highlight-gray">. Essa fase dura cerca de 1h~2h.</mark></p><p id="248dce8d-8b40-808b-8553-fc8463cb8642" class="">
+</p><ul id="248dce8d-8b40-800d-b0c2-f948ebe7176f" class="bulleted-list"><li style="list-style-type:disc"><strong>Sono R.E.M →</strong></li></ul><p id="248dce8d-8b40-806c-b0f9-fa0980b6a5a2" class=""><mark class="highlight-gray">É nessa fase em que os </mark><mark class="highlight-gray"><strong>sonhos</strong></mark><mark class="highlight-gray"> </mark><mark class="highlight-gray"><strong>ocorrem</strong></mark><mark class="highlight-gray">. A sigla </mark><mark class="highlight-gray"><strong>R.E.M</strong></mark><mark class="highlight-gray"> representa “</mark><em><mark class="highlight-gray">o rápido movimento dos olhos</mark></em><mark class="highlight-gray">”, que ocorre por conta das nossas reações ao que estamos vendo nos sonhos. É nessa fase em que o cérebro faz a gerência das informações registradas durante o dia.</mark></p><p id="248dce8d-8b40-800b-972f-dd1d5e00ee76" class="">
+</p></div></details><p id="248dce8d-8b40-80e2-9be8-d48e9cc3f8d4" class="">
+</p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0"><mark class="highlight-pink"><strong>Parte III → </strong></mark><strong>Técnicas de Estudo</strong></summary><div class="indented"><ul id="243dce8d-8b40-8146-b83b-d81ce5987767" class="bulleted-list"><li style="list-style-type:disc"><strong>Memória Fluida → </strong></li></ul><p id="248dce8d-8b40-8008-9125-cc4557a31a95" class=""><mark class="highlight-gray">É o tipo de memória que o Sistema Límbico produz. São as informações passageiras que duram até a hora de dormir.</mark></p><p id="248dce8d-8b40-802e-afd0-d27d008b0d03" class="">
+</p><ul id="248dce8d-8b40-80ab-9168-f674b1854432" class="bulleted-list"><li style="list-style-type:disc"><strong>Memória Cristalizada →</strong></li></ul><p id="248dce8d-8b40-805b-81b5-e66ff7e99c16" class=""><mark class="highlight-gray">É o tipo que estamos buscando. A apresentação constante à Memórias Fluidas acaba resultando nesse tipo permanente de memória.</mark></p><p id="248dce8d-8b40-8054-80ab-fde95380f79f" class="">
+</p><ul id="248dce8d-8b40-8002-a9d4-fc99d968e7fb" class="bulleted-list"><li style="list-style-type:disc"><strong>Sinapses →</strong></li></ul><p id="248dce8d-8b40-8056-8494-dbd198f03797" class=""><mark class="highlight-gray">São as ligações que formam um estimulo. São criadas a cada “</mark><em><mark class="highlight-gray">pedido</mark></em><mark class="highlight-gray">” do cérebro para executar algum funcionamento. Prático ou lógico.</mark></p><p id="248dce8d-8b40-8062-a6e7-caf30a6f8186" class="">
+</p><ul id="248dce8d-8b40-80d2-8663-c6bcb55b688f" class="bulleted-list"><li style="list-style-type:disc"><strong>Rede Neural →</strong></li></ul><p id="248dce8d-8b40-80f6-96be-d6d4438f8107" class=""><mark class="highlight-gray">Muitas sinapses formam uma rede de ativações cerebrais.</mark></p><p id="248dce8d-8b40-80df-9cfe-da6c1e1fb88f" class="">
+</p><ul id="248dce8d-8b40-80f8-ab63-d8c0feb4e5a4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><strong>TÉCNICA I →</strong></mark></li></ul><p id="248dce8d-8b40-8072-8ad0-da1d596b4952" class=""><mark class="highlight-gray">Aumentar a atividade do cérebro durante o período de estudos. Quanto maior for a atividade cerebral, maior a chance das informações serem gravadas.</mark><div class="indented"><p id="248dce8d-8b40-80f4-b155-d94335cf64c4" class=""><mark class="highlight-gray">Uma sinapse para sons, outra para gestos e algumas lógicas criam uma captura de informações maior na hora dos estudos.</mark></p><p id="248dce8d-8b40-80a1-92a4-ded38ad9dec7" class="">
+</p><ul id="248dce8d-8b40-80d3-bc4a-c5da61f5b625" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><strong>TÉCNICA II →</strong></mark></li></ul><blockquote id="248dce8d-8b40-8097-8ce7-c58fb42aa178" class=""><mark class="highlight-gray">Não existe aprendizado sem repetição - Marlon</mark></blockquote><p id="248dce8d-8b40-8007-9f2e-f6dcf1c2248a" class=""><mark class="highlight-gray">Não dá para fugir dessa afirmação. O cérebro irá gravar melhor as informações se um ciclo de exposição for criado.</mark><div class="indented"><p id="248dce8d-8b40-80f9-92f2-f19c8cc0bf0e" class="">
+</p><ul id="248dce8d-8b40-807c-9c0a-da4db2c4108f" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><strong>TÉCNICA III →</strong></mark></li></ul><p id="248dce8d-8b40-80fd-9391-ce65309737ce" class=""><mark class="highlight-gray">Utilizar Flashcards. Escolha um tema, marque perguntas de um lado e as respostas do outro. Tente lembrar até chegar o mais próximo possível dessa memória. </mark></p><p id="248dce8d-8b40-80bd-9cb2-f87d0e0da4b9" class="">
+</p><ul id="248dce8d-8b40-8013-a5ab-f98372f1b982" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><strong>TÉCNICA IV →</strong></mark></li></ul><p id="248dce8d-8b40-80c4-ae03-c199ca3259af" class=""><mark class="highlight-gray">Demonstre para o seu cérebro a importância daquele aprendizado. Isso pode ocorrer de vários jeitos, não necessariamente estudando. Conversar sobre, ouvir sobre, pensar sobre diariamente.</mark><div class="indented"><p id="248dce8d-8b40-8057-8d55-c467c54b67a9" class=""><mark class="highlight-gray"><strong>O importante é se expor ao tema desejado.</strong></mark></p><p id="248dce8d-8b40-8064-809a-df698dbc1eaf" class="">
+</p><ul id="248dce8d-8b40-8006-96a9-c1b72aef38e1" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><strong>TÉCNICA V →</strong></mark></li></ul><blockquote id="248dce8d-8b40-80c5-99c0-f4ed518d813f" class=""><mark class="highlight-gray"><strong>Aula dada, aula estudada, hoje e antes do período de dormir </strong></mark><mark class="highlight-gray">- Pierluigi Piazzi</mark></blockquote><p id="248dce8d-8b40-803f-9f8f-ed09b3308be8" class=""><mark class="highlight-gray">O ideal é sempre estudar a matéria no dia em que for passado.  Para ter resultado, </mark><mark class="highlight-gray"><strong>essa é a regra.</strong></mark><div class="indented"><p id="248dce8d-8b40-80ab-b339-ca8e88717049" class=""><mark class="highlight-gray">Mais de um conteúdo aprendido por dia vai acarretar em sessões de estudo, onde cada sessão tem um tema.</mark></p><p id="248dce8d-8b40-80fa-a0f5-e0c7e80c7f51" class="">
+</p><ul id="248dce8d-8b40-804a-843c-feb59ad3c517" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><strong>TÉCNICA VI →</strong></mark></li></ul><p id="248dce8d-8b40-8008-9315-dfc10ef69695" class=""><mark class="highlight-gray"><strong>Qualidade &gt; Quantidade</strong></mark><div class="indented"><p id="248dce8d-8b40-80c4-b57b-f15f478eee30" class=""><mark class="highlight-gray">O importante é o quão bem você ativa seu cérebro, o quão bem você se engaja naquele seu espaço de estudo e o quanto você foca nessa atividade.</mark><div class="indented"><p id="248dce8d-8b40-8066-936c-e086e62e7417" class=""><mark class="highlight-gray">A </mark><mark class="highlight-gray"><strong>sessão de estudos ideal dura 4h.</strong></mark><mark class="highlight-gray"> Mas uma prática de </mark><em><mark class="highlight-gray">2h </mark></em><mark class="highlight-gray">também dá resultados.</mark><div class="indented"><p id="248dce8d-8b40-800b-bd5f-e934d9ad8c52" class=""><mark class="highlight-gray"><strong>A sessão deve durar 30min</strong></mark><mark class="highlight-gray">, e ter</mark><mark class="highlight-gray"><strong> intervalos de 10min</strong></mark><mark class="highlight-gray">, até fechar vários ciclos assim. </mark></p></div></p><p id="248dce8d-8b40-80e2-98f2-ee5107a23e72" class=""><mark class="highlight-gray"><strong>Quanto menos ativação cerebral e exposição a informações empolgantes melhor vai ser o intervalo e a fixação das ideias estudadas.</strong></mark></p></div></p></div></p></div></p><p id="248dce8d-8b40-80d5-97b4-d6637ca8d20f" class="">
+</p><p id="248dce8d-8b40-80cc-9b55-fbe0ba346b1d" class="">
+</p><p id="248dce8d-8b40-801d-8e8d-ce91d34985c0" class="">
+</p></div></p></div></p></div></p></div></details><p id="248dce8d-8b40-800a-9f04-cc0aa7441ad2" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
